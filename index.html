@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Junta de Vecinos — Barrio San Antonio, San Cristóbal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --azul: #003876;
+  --azul-med: #004e9e;
+  --azul-light: #e8f0fb;
+  --azul-lighter: #f0f5ff;
+  --rojo: #c8102e;
+  --rojo-light: #fff0f2;
+  --azul-cielo: #009bde;
+  --texto: #1a1a2e;
+  --texto-s: #4a5568;
+  --borde: #d1d9e6;
+  --blanco: #ffffff;
+  --fondo: #f5f7fa;
+  --fondo2: #eef2f8;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--fondo); color: var(--texto); line-height: 1.6; font-size: 15px; }
+
+/* ── TOP BAR (bandera tricolor) ── */
+.topbar {
+  height: 4px;
+  background: linear-gradient(to right, #002d62 33.33%, #ffffff 33.33%, #ffffff 66.66%, #ce1126 66.66%);
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--azul);
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+
+.header-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.brand-shield {
+  width: 44px;
+  height: 44px;
+  background: var(--blanco);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-shield svg { width: 32px; height: 32px; }
+
+.brand-text { color: #fff; }
+.brand-text strong { display: block; font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
+.brand-text span { display: block; font-size: 11px; font-weight: 400; opacity: .75; letter-spacing: .04em; text-transform: uppercase; }
+
+nav { display: flex; align-items: center; gap: 2px; }
+
+nav a {
+  color: rgba(255,255,255,.85);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 13px;
+  border-radius: 5px;
+  transition: background .15s, color .15s;
+  white-space: nowrap;
+}
+
+nav a:hover { background: rgba(255,255,255,.1); color: #fff; }
+
+.nav-cta {
+  background: var(--rojo) !important;
+  color: #fff !important;
+  margin-left: 6px;
+  font-weight: 600 !important;
+}
+
+.nav-cta:hover { background: #a50d26 !important; }
+
+/* ── HERO GOB ── */
+.hero {
+  background: var(--azul);
+  padding: 56px 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 520px; height: 100%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='150' cy='80' r='120' fill='rgba(255,255,255,0.03)'/%3E%3Ccircle cx='180' cy='160' r='80' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E") no-repeat center;
+  background-size: cover;
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 3rem;
+  align-items: end;
+}
+
+.hero-breadcrumb {
+  font-size: 12px;
+  color: rgba(255,255,255,.55);
+  margin-bottom: 1.2rem;
+  letter-spacing: .04em;
+}
+
+.hero-breadcrumb span { color: rgba(255,255,255,.85); }
+
+.hero h1 {
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: -.02em;
+}
+
+.hero-sub {
+  color: rgba(255,255,255,.75);
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+.hero-chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.chip {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.9);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 13px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 3rem; }
+
+.btn-prim {
+  background: var(--rojo);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background .15s, transform .1s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-prim:hover { background: #a50d26; transform: translateY(-1px); }
+
+.btn-sec {
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.3);
+  cursor: pointer;
+  transition: background .15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-sec:hover { background: rgba(255,255,255,.2); }
+
+.hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+.stat-n { font-size: 2rem; font-weight: 700; color: #fff; display: block; line-height: 1; margin-bottom: 3px; }
+.stat-l { font-size: 11px; color: rgba(255,255,255,.55); letter-spacing: .05em; text-transform: uppercase; }
+
+.hero-map-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 0;
+}
+
+.hero-map {
+  height: 260px;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  border-bottom: none;
+}
+
+.hero-map iframe { width: 100%; height: 100%; border: none; filter: saturate(.6) brightness(.9); }
+
+.hero-loc {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: none;
+}
+
+/* ── QUICK ACCESS CARDS ── */
+.quick {
+  background: var(--blanco);
+  padding: 0 2rem;
+  border-bottom: 1px solid var(--borde);
+}
+
+.quick-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.quick-card {
+  padding: 20px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-right: 1px solid var(--borde);
+  text-decoration: none;
+  transition: background .15s;
+  color: var(--texto);
+}
+
+.quick-card:last-child { border-right: none; }
+.quick-card:hover { background: var(--azul-lighter); }
+
+.quick-ico {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.quick-ico.b { background: var(--azul-light); }
+.quick-ico.r { background: var(--rojo-light); }
+.quick-ico.g { background: #eaf5ea; }
+.quick-ico.o { background: #fff8e8; }
+
+.quick-lbl { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.quick-sub { font-size: 11px; color: var(--texto-s); }
+
+/* ── SECTIONS COMUNES ── */
+.sec { padding: 64px 2rem; }
+.sec-inner { max-width: 1140px; margin: 0 auto; }
+
+.sec-head { margin-bottom: 2.2rem; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+
+.sec-title-block {}
+.sec-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--azul-med); margin-bottom: .5rem; }
+.sec-tag::before { content: ''; width: 12px; height: 3px; background: var(--rojo); border-radius: 2px; }
+.sec-h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -.02em; }
+.sec-sub { font-size: 14px; color: var(--texto-s); margin-top: .4rem; }
+
+.ver-todo { font-size: 13px; font-weight: 600; color: var(--azul-med); text-decoration: none; border: 1px solid var(--borde); padding: 7px 16px; border-radius: 6px; transition: all .15s; white-space: nowrap; }
+.ver-todo:hover { background: var(--azul-light); border-color: var(--azul-med); }
+
+/* ── DIRECTIVA ── */
+.sec-blanco { background: var(--blanco); }
+.sec-fondo { background: var(--fondo); }
+.sec-fondo2 { background: var(--fondo2); }
+
+.directiva-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
+
+.d-card {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 24px 18px;
+  text-align: center;
+  transition: box-shadow .2s, border-color .2s;
+}
+
+.d-card:hover { box-shadow: 0 4px 18px rgba(0,56,118,.1); border-color: #b0c4de; }
+
+.d-card.pres { border-top: 3px solid var(--azul); }
+.d-card.vice { border-top: 3px solid var(--rojo); }
+.d-card.other { border-top: 3px solid var(--azul-cielo); }
+
+.d-av {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700; color: #fff;
+  margin: 0 auto 14px;
+}
+
+.d-av.azul { background: var(--azul); }
+.d-av.rojo { background: var(--rojo); }
+.d-av.cielo { background: var(--azul-cielo); }
+
+.d-cargo { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--texto-s); margin-bottom: 5px; }
+.d-nom { font-size: 15px; font-weight: 700; margin-bottom: 6px; letter-spacing: -.01em; }
+.d-tel { font-size: 13px; }
+.d-tel a { color: var(--azul-med); text-decoration: none; font-weight: 500; }
+.d-tel a:hover { text-decoration: underline; }
+
+/* ── AVISOS ── */
+.avisos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 16px; }
+
+.av-card {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+
+.av-card:hover { box-shadow: 0 4px 18px rgba(0,56,118,.1); }
+
+.av-stripe { height: 4px; }
+.av-stripe.urg { background: var(--rojo); }
+.av-stripe.inf { background: var(--azul-med); }
+.av-stripe.evt { background: #2e7d52; }
+
+.av-inner { padding: 18px 20px; }
+
+.av-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+
+.av-badge {
+  font-size: 10px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 4px;
+}
+
+.av-badge.urg { background: var(--rojo-light); color: var(--rojo); }
+.av-badge.inf { background: var(--azul-light); color: var(--azul-med); }
+.av-badge.evt { background: #eaf5ea; color: #2e7d52; }
+
+.av-fecha { font-size: 12px; color: var(--texto-s); margin-left: auto; }
+.av-tit { font-size: 15px; font-weight: 700; margin-bottom: 6px; letter-spacing: -.01em; }
+.av-desc { font-size: 13px; color: var(--texto-s); line-height: 1.6; }
+
+/* ── REPORTAR ── */
+.rep-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 3.5rem; align-items: start; }
+
+.rep-info-card {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.rep-info-header {
+  background: var(--azul);
+  padding: 20px 24px;
+  color: #fff;
+}
+
+.rep-info-header h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.rep-info-header p { font-size: 13px; opacity: .8; }
+
+.rep-steps { list-style: none; padding: 20px 24px; }
+.rep-step { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--fondo2); }
+.rep-step:last-child { border-bottom: none; }
+
+.step-n {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--azul-light); color: var(--azul-med);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+}
+
+.step-t { font-size: 13px; color: var(--texto-s); line-height: 1.55; }
+
+.rep-urgente {
+  margin: 0 24px 20px;
+  background: var(--rojo-light);
+  border-left: 3px solid var(--rojo);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--texto-s);
+}
+
+.rep-urgente strong { color: var(--rojo); display: block; margin-bottom: 3px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+
+/* FORM */
+.form-card {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.form-header {
+  background: var(--fondo2);
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--borde);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--texto);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-body { padding: 24px; }
+
+.fg { margin-bottom: 16px; }
+.fl { display: block; font-size: 13px; font-weight: 600; color: var(--texto); margin-bottom: 6px; }
+.fl span { color: var(--rojo); margin-left: 2px; }
+
+.fi, .fs, .ft {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--texto);
+  background: var(--blanco);
+  transition: border-color .15s, box-shadow .15s;
+  outline: none;
+}
+
+.fi:focus, .fs:focus, .ft:focus {
+  border-color: var(--azul-med);
+  box-shadow: 0 0 0 3px rgba(0,78,158,.1);
+}
+
+.ft { resize: vertical; min-height: 90px; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.upload-zone {
+  border: 2px dashed var(--borde);
+  border-radius: 6px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  background: var(--fondo);
+  transition: border-color .15s, background .15s;
+}
+
+.upload-zone:hover { border-color: var(--azul-med); background: var(--azul-lighter); }
+.upload-ico { font-size: 24px; margin-bottom: 6px; }
+.upload-txt { font-size: 12px; color: var(--texto-s); }
+.upload-txt strong { color: var(--azul-med); }
+
+.fsub {
+  width: 100%;
+  background: var(--azul);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background .15s;
+  margin-top: 4px;
+  letter-spacing: .01em;
+}
+
+.fsub:hover { background: var(--azul-med); }
+
+/* ── DOCUMENTOS ── */
+.doc-filtros { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.8rem; }
+
+.doc-btn {
+  padding: 7px 16px;
+  border-radius: 5px;
+  border: 1px solid var(--borde);
+  background: var(--blanco);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--texto-s);
+  transition: all .15s;
+}
+
+.doc-btn.active, .doc-btn:hover { background: var(--azul); color: #fff; border-color: var(--azul); }
+
+.doc-lista { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--borde); border-radius: 8px; overflow: hidden; }
+
+.doc-item {
+  background: var(--blanco);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--fondo2);
+  transition: background .15s;
+}
+
+.doc-item:last-child { border-bottom: none; }
+.doc-item:hover { background: var(--azul-lighter); }
+
+.doc-ico { width: 38px; height: 38px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.doc-ico.a { background: #e8f5ee; }
+.doc-ico.c { background: var(--azul-light); }
+.doc-ico.f { background: #fff8e8; }
+
+.doc-info { flex: 1; }
+.doc-nom { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+.doc-meta { font-size: 12px; color: var(--texto-s); }
+
+.doc-dl {
+  color: var(--azul-med);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 14px;
+  border: 1px solid var(--borde);
+  border-radius: 5px;
+  flex-shrink: 0;
+  transition: all .15s;
+  background: var(--blanco);
+}
+
+.doc-dl:hover { background: var(--azul); color: #fff; border-color: var(--azul); }
+
+/* ── FINANZAS ── */
+.fin-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+
+.fin-resumen {
+  background: var(--azul);
+  border-radius: 8px;
+  padding: 28px;
+  color: #fff;
+}
+
+.fin-resumen h3 { font-size: 14px; font-weight: 600; opacity: .7; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 1.5rem; }
+
+.fin-metricas { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 2rem; }
+
+.fin-m {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 8px;
+  padding: 18px 16px;
+}
+
+.fin-m-lbl { font-size: 11px; font-weight: 500; opacity: .6; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
+.fin-m-val { font-size: 1.5rem; font-weight: 700; }
+.fin-m-sub { font-size: 11px; opacity: .5; margin-top: 3px; }
+
+.fin-gastos {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.fin-gastos-head {
+  background: var(--fondo2);
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--borde);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+.fin-gastos-body { padding: 0; }
+
+.gasto-row {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--fondo2);
+  gap: 12px;
+}
+
+.gasto-row:last-child { border-bottom: none; }
+
+.gasto-bar-wrap { flex: 1; }
+.gasto-info-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; }
+.gasto-nom { font-weight: 500; }
+.gasto-val { font-weight: 700; color: var(--azul); }
+.gasto-bar-bg { height: 5px; background: var(--fondo2); border-radius: 3px; overflow: hidden; }
+.gasto-bar-fill { height: 100%; border-radius: 3px; background: var(--azul-med); }
+
+/* ── CONTACTO / EMERGENCIAS ── */
+.emerg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 2.5rem; }
+
+.em-card {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 22px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: box-shadow .2s;
+}
+
+.em-card:hover { box-shadow: 0 4px 18px rgba(0,56,118,.1); }
+
+.em-card.r { border-top: 3px solid var(--rojo); }
+.em-card.b { border-top: 3px solid var(--azul-med); }
+.em-card.v { border-top: 3px solid #2e7d52; }
+.em-card.o { border-top: 3px solid #e07020; }
+
+.em-ico { font-size: 26px; }
+.em-nom { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--texto-s); }
+.em-tel { font-size: 1.2rem; font-weight: 700; color: var(--azul); }
+.em-sub { font-size: 12px; color: var(--texto-s); }
+
+.contacto-box {
+  background: var(--azul-light);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 28px;
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cbox-t { flex: 1; min-width: 220px; }
+.cbox-t h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.cbox-t p { font-size: 14px; color: var(--texto-s); line-height: 1.6; }
+
+.cbox-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.btn-wa { background: #25d366; color: #fff; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; padding: 11px 20px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: opacity .15s; }
+.btn-wa:hover { opacity: .9; }
+
+.btn-mail { background: var(--azul); color: #fff; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; padding: 11px 20px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: background .15s; }
+.btn-mail:hover { background: var(--azul-med); }
+
+/* ── FOOTER ── */
+.footer-top {
+  background: var(--azul);
+  padding: 40px 2rem;
+}
+
+.footer-top-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.f-col-title { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.9); margin-bottom: 12px; letter-spacing: .05em; text-transform: uppercase; }
+.f-col-txt { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.7; }
+.f-links { list-style: none; }
+.f-links li a { font-size: 13px; color: rgba(255,255,255,.6); text-decoration: none; display: block; padding: 3px 0; transition: color .15s; }
+.f-links li a:hover { color: #fff; }
+
+.footer-bot {
+  background: #002558;
+  padding: 16px 2rem;
+}
+
+.footer-bot-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-bot p { font-size: 12px; color: rgba(255,255,255,.4); }
+
+/* ── TOAST ── */
+.toast { position: fixed; bottom: 2rem; right: 2rem; background: #1a5c3a; color: #fff; padding: 14px 22px; border-radius: 8px; font-size: 14px; font-weight: 500; z-index: 999; transform: translateY(100px); opacity: 0; transition: all .3s; box-shadow: 0 6px 24px rgba(0,0,0,.2); }
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* ── ANIM ── */
+@keyframes fu { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.afu { animation: fu .55s ease both; }
+.d1 { animation-delay: .1s; }
+.d2 { animation-delay: .2s; }
+.d3 { animation-delay: .3s; }
+.d4 { animation-delay: .4s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav a:not(.nav-cta) { display: none; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-map { height: 200px; }
+  .quick-inner { grid-template-columns: repeat(2, 1fr); }
+  .rep-layout { grid-template-columns: 1fr; }
+  .fin-layout { grid-template-columns: 1fr; }
+  .frow { grid-template-columns: 1fr; }
+  .footer-top-inner { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="brand">
+      <div class="brand-shield">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 4L6 12V24C6 33.6 14 42.2 24 44C34 42.2 42 33.6 42 24V12L24 4Z" fill="#003876"/>
+          <path d="M24 4L6 12V24C6 33.6 14 42.2 24 44C34 42.2 42 33.6 42 24V12L24 4Z" fill="#003876" stroke="#c8102e" stroke-width="1.5"/>
+          <rect x="16" y="20" width="6" height="12" fill="#c8102e"/>
+          <rect x="26" y="20" width="6" height="12" fill="#009bde"/>
+          <rect x="16" y="14" width="16" height="7" fill="#ffffff"/>
+          <text x="24" y="40" font-family="Arial" font-size="5" fill="#003876" text-anchor="middle" font-weight="bold">RD</text>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <strong>Junta de Vecinos — Barrio San Antonio</strong>
+        <span>San Cristóbal, República Dominicana</span>
+      </div>
+    </a>
+    <nav>
+      <a href="#directiva">Directiva</a>
+      <a href="#avisos">Avisos</a>
+      <a href="#documentos">Documentos</a>
+      <a href="#transparencia">Finanzas</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#reportar" class="nav-cta">⚠ Reportar problema</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-breadcrumb afu">República Dominicana › Provincia San Cristóbal › <span>Barrio San Antonio</span></div>
+      <h1 class="afu d1">Junta de Vecinos<br>Barrio San Antonio</h1>
+      <p class="hero-sub afu d2">Portal comunitario oficial para los residentes del Barrio San Antonio, sector Lava Pie, municipio San Cristóbal. Reporta problemas, accede a documentos y mantente informado.</p>
+      <div class="hero-chips afu d2">
+        <span class="chip">📍 Sector Lava Pie</span>
+        <span class="chip">🏛 San Cristóbal</span>
+        <span class="chip">⚡ Gestión 2023–2025</span>
+      </div>
+      <div class="hero-btns afu d3">
+        <a href="#reportar" class="btn-prim">⚠ Reportar un problema</a>
+        <a href="#avisos" class="btn-sec">📢 Ver avisos</a>
+      </div>
+      <div class="hero-stats afu d4">
+        <div><span class="stat-n">180+</span><span class="stat-l">Familias</span></div>
+        <div><span class="stat-n">38</span><span class="stat-l">Años activos</span></div>
+        <div><span class="stat-n">12</span><span class="stat-l">Proyectos 2025</span></div>
+      </div>
+    </div>
+    <div class="hero-map-col afu d2">
+      <div class="hero-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784!2d-70.105!3d18.4167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf861b36a3f58d%3A0x95f33399b9c74b0a!2sSan%20Crist%C3%B3bal!5e0!3m2!1ses!2sdo!4v1" loading="lazy" allowfullscreen title="Mapa Barrio San Antonio"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK ACCESS -->
+<div class="quick">
+  <div class="quick-inner">
+    <a href="#reportar" class="quick-card">
+      <div class="quick-ico r">⚠️</div>
+      <div><div class="quick-lbl">Reportar problema</div><div class="quick-sub">Baches, luz, agua, cañadas</div></div>
+    </a>
+    <a href="#avisos" class="quick-card">
+      <div class="quick-ico b">📢</div>
+      <div><div class="quick-lbl">Avisos del barrio</div><div class="quick-sub">Cortes, asambleas, noticias</div></div>
+    </a>
+    <a href="#documentos" class="quick-card">
+      <div class="quick-ico g">📄</div>
+      <div><div class="quick-lbl">Documentos</div><div class="quick-sub">Actas, cartas, estado de caja</div></div>
+    </a>
+    <a href="#contacto" class="quick-card">
+      <div class="quick-ico o">📞</div>
+      <div><div class="quick-lbl">Emergencias</div><div class="quick-sub">Policía, INAPA, EDES-SUR</div></div>
+    </a>
+  </div>
+</div>
+
+<!-- DIRECTIVA -->
+<section class="sec sec-blanco" id="directiva">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-title-block">
+        <div class="sec-tag">Período 2023–2025</div>
+        <h2 class="sec-h2">Directiva del barrio</h2>
+        <p class="sec-sub">Representantes elegidos por los vecinos del Barrio San Antonio.</p>
+      </div>
+    </div>
+    <div class="directiva-grid">
+      <div class="d-card pres">
+        <div class="d-av azul">JP</div>
+        <div class="d-cargo">Presidente</div>
+        <div class="d-nom">Juan Pérez Martínez</div>
+        <div class="d-tel"><a href="tel:+18091234567">📞 (809) 123-4567</a></div>
+      </div>
+      <div class="d-card vice">
+        <div class="d-av rojo">MG</div>
+        <div class="d-cargo">Vicepresidenta</div>
+        <div class="d-nom">María García López</div>
+        <div class="d-tel"><a href="tel:+18091234568">📞 (809) 123-4568</a></div>
+      </div>
+      <div class="d-card other">
+        <div class="d-av cielo">CR</div>
+        <div class="d-cargo">Secretario</div>
+        <div class="d-nom">Carlos Rodríguez</div>
+        <div class="d-tel"><a href="tel:+18091234569">📞 (809) 123-4569</a></div>
+      </div>
+      <div class="d-card other">
+        <div class="d-av cielo">AM</div>
+        <div class="d-cargo">Tesorera</div>
+        <div class="d-nom">Ana Marte Sánchez</div>
+        <div class="d-tel"><a href="tel:+18091234570">📞 (809) 123-4570</a></div>
+      </div>
+      <div class="d-card other">
+        <div class="d-av cielo">RD</div>
+        <div class="d-cargo">Vocal</div>
+        <div class="d-nom">Rafael Díaz Núñez</div>
+        <div class="d-tel"><a href="tel:+18091234571">📞 (809) 123-4571</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVISOS -->
+<section class="sec sec-fondo" id="avisos">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-title-block">
+        <div class="sec-tag">Actualizados semanalmente</div>
+        <h2 class="sec-h2">Avisos del barrio</h2>
+        <p class="sec-sub">Información relevante para todos los residentes.</p>
+      </div>
+    </div>
+    <div class="avisos-grid">
+      <div class="av-card"><div class="av-stripe urg"></div><div class="av-inner"><div class="av-meta"><span class="av-badge urg">Urgente</span><span class="av-fecha">5 mayo 2025</span></div><div class="av-tit">Corte de agua — Viernes 9 de mayo</div><div class="av-desc">INAPA realizará trabajos de mantenimiento en la red principal. El servicio se restablecerá a las 4pm. Se recomienda almacenar agua previamente.</div></div></div>
+      <div class="av-card"><div class="av-stripe evt"></div><div class="av-inner"><div class="av-meta"><span class="av-badge evt">Asamblea</span><span class="av-fecha">28 abr 2025</span></div><div class="av-tit">Asamblea ordinaria — Sábado 17 de mayo</div><div class="av-desc">Reunión a las 7pm en el salón comunitario. Agenda: presupuesto 2025, obras de la cañada y elección de vocal.</div></div></div>
+      <div class="av-card"><div class="av-stripe inf"></div><div class="av-inner"><div class="av-meta"><span class="av-badge inf">Información</span><span class="av-fecha">20 abr 2025</span></div><div class="av-tit">Operativo de recogida de escombros</div><div class="av-desc">El Ayuntamiento Municipal pasará el miércoles 7 de mayo. Sacar materiales la noche anterior.</div></div></div>
+      <div class="av-card"><div class="av-stripe inf"></div><div class="av-inner"><div class="av-meta"><span class="av-badge inf">Información</span><span class="av-fecha">15 abr 2025</span></div><div class="av-tit">Reparación del alumbrado — Calle 3</div><div class="av-desc">EDES-SUR confirmó que la reparación de las 4 lámparas apagadas se realizará en los próximos días hábiles.</div></div></div>
+      <div class="av-card"><div class="av-stripe evt"></div><div class="av-inner"><div class="av-meta"><span class="av-badge evt">Evento</span><span class="av-fecha">8 abr 2025</span></div><div class="av-tit">Jornada de limpieza comunitaria</div><div class="av-desc">Sábado 10 de mayo a las 7am. Limpiaremos las cañadas y puntos de acumulación de basura. Traer guantes.</div></div></div>
+      <div class="av-card"><div class="av-stripe urg"></div><div class="av-inner"><div class="av-meta"><span class="av-badge urg">Alerta</span><span class="av-fecha">2 abr 2025</span></div><div class="av-tit">Cañada desbordada — sector bajo</div><div class="av-desc">Tras las lluvias del fin de semana la cañada se desbordó. Evitar el área y reportar daños a la directiva.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORTAR -->
+<section class="sec sec-fondo2" id="reportar">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-title-block">
+        <div class="sec-tag">Tu voz importa</div>
+        <h2 class="sec-h2">Reportar un problema</h2>
+        <p class="sec-sub">Cada reporte llega directamente a la directiva para ser gestionado.</p>
+      </div>
+    </div>
+    <div class="rep-layout">
+      <div>
+        <div class="rep-info-card">
+          <div class="rep-info-header">
+            <h3>¿Cómo funciona?</h3>
+            <p>Proceso simple en 4 pasos</p>
+          </div>
+          <ul class="rep-steps">
+            <li class="rep-step"><div class="step-n">1</div><div class="step-t">Completa el formulario con descripción y ubicación del problema.</div></li>
+            <li class="rep-step"><div class="step-n">2</div><div class="step-t">Adjunta una foto si es posible — ayuda a entender mejor la situación.</div></li>
+            <li class="rep-step"><div class="step-n">3</div><div class="step-t">La directiva recibe el reporte y lo gestiona con la institución correspondiente.</div></li>
+            <li class="rep-step"><div class="step-n">4</div><div class="step-t">El problema resuelto se publica en el tablón de avisos.</div></li>
+          </ul>
+          <div class="rep-urgente">
+            <strong>🚨 Emergencia inmediata</strong>
+            Llama directamente al presidente al <a href="tel:+18091234567" style="color:var(--azul-med);font-weight:600;">(809) 123-4567</a> o al <strong>911</strong>.
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="form-card">
+          <div class="form-header">📋 Formulario de reporte</div>
+          <div class="form-body">
+            <form id="rep-form" onsubmit="enviar(event)">
+              <div class="frow">
+                <div class="fg"><label class="fl">Nombre<span>*</span></label><input type="text" class="fi" placeholder="Tu nombre completo" required></div>
+                <div class="fg"><label class="fl">Teléfono</label><input type="tel" class="fi" placeholder="(809) 000-0000"></div>
+              </div>
+              <div class="fg">
+                <label class="fl">Tipo de problema<span>*</span></label>
+                <select class="fs" required>
+                  <option value="">Seleccionar categoría...</option>
+                  <option>🛣️ Bache o daño en calle</option>
+                  <option>💡 Alumbrado público apagado</option>
+                  <option>💧 Problema con el agua</option>
+                  <option>🌊 Cañada o drenaje tapado</option>
+                  <option>🗑️ Basura acumulada</option>
+                  <option>🔒 Situación de seguridad</option>
+                  <option>🏚️ Daño a infraestructura</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+              <div class="fg"><label class="fl">Ubicación exacta<span>*</span></label><input type="text" class="fi" placeholder="Ej: Calle 3 frente al colmado El Nuevo" required></div>
+              <div class="fg"><label class="fl">Descripción del problema<span>*</span></label><textarea class="ft" placeholder="Describe lo que está pasando con el mayor detalle posible..." required></textarea></div>
+              <div class="fg">
+                <label class="fl">Foto (opcional)</label>
+                <div class="upload-zone" onclick="document.getElementById('foto').click()">
+                  <div class="upload-ico">📸</div>
+                  <div class="upload-txt"><strong>Haz clic para adjuntar una foto</strong><br>JPG o PNG — máximo 10MB</div>
+                  <input type="file" id="foto" accept="image/*" style="display:none" onchange="verFoto(this)">
+                </div>
+                <div id="foto-n" style="font-size:12px;color:var(--azul-med);margin-top:5px;display:none;font-weight:600;"></div>
+              </div>
+              <button type="submit" class="fsub">Enviar reporte a la directiva →</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTOS -->
+<section class="sec sec-blanco" id="documentos">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-title-block">
+        <div class="sec-tag">Acceso público</div>
+        <h2 class="sec-h2">Documentos oficiales</h2>
+        <p class="sec-sub">Actas, cartas al ayuntamiento y estados de caja disponibles para todos los residentes.</p>
+      </div>
+    </div>
+    <div class="doc-filtros">
+      <button class="doc-btn active" onclick="filtrar('todos',this)">Todos los documentos</button>
+      <button class="doc-btn" onclick="filtrar('a',this)">Actas</button>
+      <button class="doc-btn" onclick="filtrar('c',this)">Cartas al Ayuntamiento</button>
+      <button class="doc-btn" onclick="filtrar('f',this)">Estado de caja</button>
+    </div>
+    <div class="doc-lista" id="docs">
+      <div class="doc-item" data-cat="a"><div class="doc-ico a">📄</div><div class="doc-info"><div class="doc-nom">Acta asamblea ordinaria — Abril 2025</div><div class="doc-meta">Publicado el 30 abr 2025 · PDF · 245 KB</div></div><a href="#" class="doc-dl">⬇ Descargar</a></div>
+      <div class="doc-item" data-cat="c"><div class="doc-ico c">📨</div><div class="doc-info"><div class="doc-nom">Carta al Ayuntamiento — Solicitud reparación cañada sector bajo</div><div class="doc-meta">Publicado el 15 abr 2025 · PDF · 180 KB</div></div><a href="#" class="doc-dl">⬇ Descargar</a></div>
+      <div class="doc-item" data-cat="f"><div class="doc-ico f">💰</div><div class="doc-info"><div class="doc-nom">Estado de caja — Abril 2025</div><div class="doc-meta">Publicado el 1 may 2025 · PDF · 120 KB</div></div><a href="#" class="doc-dl">⬇ Descargar</a></div>
+      <div class="doc-item" data-cat="a"><div class="doc-ico a">📄</div><div class="doc-info"><div class="doc-nom">Acta asamblea ordinaria — Marzo 2025</div><div class="doc-meta">Publicado el 31 mar 2025 · PDF · 210 KB</div></div><a href="#" class="doc-dl">⬇ Descargar</a></div>
+      <div class="doc-item" data-cat="f"><div class="doc-ico f">💰</div><div class="doc-info"><div class="doc-nom">Estado de caja — Marzo 2025</div><div class="doc-meta">Publicado el 1 abr 2025 · PDF · 115 KB</div></div><a href="#" class="doc-dl">⬇ Descargar</a></div>
+      <div class="doc-item" data-cat="c"><div class="doc-ico c">📨</div><div class="doc-info"><div class="doc-nom">Carta a EDES-SUR — Alumbrado calles 3 y 5</div><div class="doc-meta">Publicado el 10 mar 2025 · PDF · 95 KB</div></div><a href="#" class="doc-dl">⬇ Descargar</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPARENCIA FINANCIERA -->
+<section class="sec sec-fondo" id="transparencia">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-title-block">
+        <div class="sec-tag">Actualizado mensualmente</div>
+        <h2 class="sec-h2">Transparencia financiera</h2>
+        <p class="sec-sub">El dinero del barrio es de todos. Aquí puedes ver exactamente en qué se usa.</p>
+      </div>
+    </div>
+    <div class="fin-layout">
+      <div class="fin-resumen">
+        <h3>Resumen — Mayo 2025</h3>
+        <div class="fin-metricas">
+          <div class="fin-m"><div class="fin-m-lbl">Saldo en caja</div><div class="fin-m-val">RD$42,800</div><div class="fin-m-sub">Al 1 de mayo</div></div>
+          <div class="fin-m"><div class="fin-m-lbl">Ingresos abril</div><div class="fin-m-val">RD$18,500</div><div class="fin-m-sub">Cuotas + donaciones</div></div>
+          <div class="fin-m"><div class="fin-m-lbl">Gastos abril</div><div class="fin-m-val">RD$12,300</div><div class="fin-m-sub">Operaciones y obras</div></div>
+          <div class="fin-m"><div class="fin-m-lbl">Vecinos al día</div><div class="fin-m-val">134 / 180</div><div class="fin-m-sub">74% de familias</div></div>
+        </div>
+      </div>
+      <div class="fin-gastos">
+        <div class="fin-gastos-head">📊 Desglose de gastos — Abril 2025</div>
+        <div class="fin-gastos-body">
+          <div class="gasto-row"><div class="gasto-bar-wrap"><div class="gasto-info-row"><span class="gasto-nom">Reparación luminaria calle 3</span><span class="gasto-val">RD$4,500</span></div><div class="gasto-bar-bg"><div class="gasto-bar-fill" style="width:73%"></div></div></div></div>
+          <div class="gasto-row"><div class="gasto-bar-wrap"><div class="gasto-info-row"><span class="gasto-nom">Limpieza cañada sector bajo</span><span class="gasto-val">RD$3,200</span></div><div class="gasto-bar-bg"><div class="gasto-bar-fill" style="width:52%"></div></div></div></div>
+          <div class="gasto-row"><div class="gasto-bar-wrap"><div class="gasto-info-row"><span class="gasto-nom">Gestiones administrativas</span><span class="gasto-val">RD$2,800</span></div><div class="gasto-bar-bg"><div class="gasto-bar-fill" style="width:45%"></div></div></div></div>
+          <div class="gasto-row"><div class="gasto-bar-wrap"><div class="gasto-info-row"><span class="gasto-nom">Papelería y comunicaciones</span><span class="gasto-val">RD$1,800</span></div><div class="gasto-bar-bg"><div class="gasto-bar-fill" style="width:29%"></div></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="sec sec-blanco" id="contacto">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-title-block">
+        <div class="sec-tag">Siempre disponibles</div>
+        <h2 class="sec-h2">Contacto y emergencias</h2>
+        <p class="sec-sub">Números importantes para los residentes del Barrio San Antonio.</p>
+      </div>
+    </div>
+    <div class="emerg-grid">
+      <div class="em-card r"><div class="em-ico">🚨</div><div class="em-nom">Emergencias</div><div class="em-tel">911</div><div class="em-sub">Disponible 24/7</div></div>
+      <div class="em-card b"><div class="em-ico">💧</div><div class="em-nom">INAPA San Cristóbal</div><div class="em-tel">(809) 528-1234</div><div class="em-sub">Problemas de agua potable</div></div>
+      <div class="em-card o"><div class="em-ico">⚡</div><div class="em-nom">EDES-SUR</div><div class="em-tel">(809) 621-3456</div><div class="em-sub">Alumbrado y cortes de luz</div></div>
+      <div class="em-card v"><div class="em-ico">🏛️</div><div class="em-nom">Ayuntamiento San Cristóbal</div><div class="em-tel">(809) 528-3040</div><div class="em-sub">Obras y gestiones municipales</div></div>
+    </div>
+    <div class="contacto-box">
+      <div class="cbox-t">
+        <h3>Contactar a la directiva</h3>
+        <p>Para consultas, sugerencias o gestiones directas con la junta. Respondemos de lunes a sábado en horario de oficina.</p>
+      </div>
+      <div class="cbox-btns">
+        <a href="https://wa.me/18091234567?text=Hola,%20soy%20residente%20del%20Barrio%20San%20Antonio" class="btn-wa" target="_blank">💬 WhatsApp</a>
+        <a href="mailto:juntasanantonio@gmail.com" class="btn-mail">✉️ Correo electrónico</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer-top">
+  <div class="footer-top-inner">
+    <div>
+      <div class="f-col-title">Junta de Vecinos — Barrio San Antonio</div>
+      <p class="f-col-txt">Organización comunitaria sin fines de lucro que representa a los residentes del Barrio San Antonio, sector Lava Pie, municipio San Cristóbal, República Dominicana.<br><br>Límites: Norte: Calle Osvaldo Bazil · Sur: Carretera Palenque · Este: Río Yubazo · Oeste: Calle Bernardo Alíes.</p>
+    </div>
+    <div>
+      <div class="f-col-title">Accesos rápidos</div>
+      <ul class="f-links">
+        <li><a href="#directiva">Directiva</a></li>
+        <li><a href="#avisos">Tablón de avisos</a></li>
+        <li><a href="#reportar">Reportar problema</a></li>
+        <li><a href="#documentos">Documentos</a></li>
+        <li><a href="#transparencia">Transparencia financiera</a></li>
+        <li><a href="#contacto">Contacto y emergencias</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-title">Contacto</div>
+      <p class="f-col-txt">
+        📞 (809) 123-4567<br>
+        ✉️ juntasanantonio@gmail.com<br><br>
+        Lunes a Sábado<br>8:00am – 6:00pm
+      </p>
+    </div>
+  </div>
+</div>
+<div class="footer-bot">
+  <div class="footer-bot-inner">
+    <p>© 2025 Junta de Vecinos Barrio San Antonio · San Cristóbal, República Dominicana</p>
+    <p>Sitio desarrollado para la comunidad</p>
+  </div>
+</div>
+
+<div class="toast" id="toast">✅ Reporte enviado correctamente. La directiva lo recibirá en breve.</div>
+
+<script>
+function enviar(e) {
+  e.preventDefault();
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 4500);
+  e.target.reset();
+  document.getElementById('foto-n').style.display = 'none';
+}
+function verFoto(i) {
+  const d = document.getElementById('foto-n');
+  if (i.files && i.files[0]) { d.textContent = '📎 ' + i.files[0].name; d.style.display = 'block'; }
+}
+function filtrar(cat, btn) {
+  document.querySelectorAll('.doc-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.doc-item').forEach(el => {
+    el.style.display = (cat === 'todos' || el.dataset.cat === cat) ? 'flex' : 'none';
+  });
+}
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.d-card,.av-card,.doc-item,.fin-m,.em-card,.quick-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity .45s ease, transform .45s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
